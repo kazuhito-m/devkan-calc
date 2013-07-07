@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
 public class CalculatorIT extends JerseyTest {
 
     @Test
-    public void testAdd() {
+    public void testAdd001() {
         String actual = target("/calc/add")
                 .queryParam("a", "1")
                 .queryParam("b", "1")
@@ -20,6 +20,17 @@ public class CalculatorIT extends JerseyTest {
                 .get(String.class);
 
         assertThat(actual, is("2"));
+    }
+
+    @Test
+    public void testAdd002() {
+        String actual = target("/calc/add")
+                .queryParam("a", "12")
+                .queryParam("b", "34")
+                .request()
+                .get(String.class);
+
+        assertThat(actual, is("46"));
     }
 
     @Override
